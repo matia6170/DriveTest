@@ -29,7 +29,7 @@ public class Robot extends TimedRobot {
   private XboxController pilot;
   private SpeedControllerGroup m_left;
   private SpeedControllerGroup m_right;
-  
+
   private ArrayList<Victor> motorsLeft = new ArrayList<Victor>();
   private ArrayList<Victor> motorsRight = new ArrayList<Victor>();
 
@@ -51,9 +51,12 @@ public class Robot extends TimedRobot {
 
 
        pilot = new XboxController(0);
+       /*
         m_left = new SpeedControllerGroup(new SpeedControllerGroup(motorsLeft.get(0), motorsLeft.get(1), motorsLeft.get(2)));
        m_right = new SpeedControllerGroup(new SpeedControllerGroup(motorsRight.get(3), motorsRight.get(4), motorsRight.get(5)));
-     
+    */
+       m_left = new SpeedControllerGroup(new SpeedControllerGroup(new Victor(0), new Victor(1)), new Victor(2));
+       m_right = new SpeedControllerGroup(new SpeedControllerGroup(new Victor(3), new Victor(4)), new Victor(5));
 
       
        drive = new DifferentialDrive(m_left, m_right);
