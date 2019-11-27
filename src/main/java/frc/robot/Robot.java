@@ -8,7 +8,7 @@
 package frc.robot;
 
 //import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import java.util.ArrayList;
+
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -29,11 +29,6 @@ public class Robot extends TimedRobot {
   private XboxController pilot;
   private SpeedControllerGroup m_left;
   private SpeedControllerGroup m_right;
-
-  private ArrayList<Victor> motorsLeft = new ArrayList<Victor>();
-  private ArrayList<Victor> motorsRight = new ArrayList<Victor>();
-
-
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -41,23 +36,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
-    motorsLeft.add(new Victor(0));
-    motorsLeft.add(new Victor(1));
-    motorsLeft.add(new Victor(2));
-
-    motorsRight.add(new Victor(3));
-    motorsRight.add(new Victor(4));
-    motorsRight.add(new Victor(5));
-
-
        pilot = new XboxController(0);
-       /*
-        m_left = new SpeedControllerGroup(new SpeedControllerGroup(motorsLeft.get(0), motorsLeft.get(1), motorsLeft.get(2)));
-       m_right = new SpeedControllerGroup(new SpeedControllerGroup(motorsRight.get(3), motorsRight.get(4), motorsRight.get(5)));
-    */
-       m_left = new SpeedControllerGroup(new SpeedControllerGroup(new Victor(0), new Victor(1)), new Victor(2));
-       m_right = new SpeedControllerGroup(new SpeedControllerGroup(new Victor(3), new Victor(4)), new Victor(5));
-
+      
+       m_left = new SpeedControllerGroup(new SpeedControllerGroup(new Victor(0), new Victor(1) ), new Victor(2) );
+       m_right = new SpeedControllerGroup(new SpeedControllerGroup(new Victor(3), new Victor(4) ), new Victor(5) );
       
        drive = new DifferentialDrive(m_left, m_right);
   }
